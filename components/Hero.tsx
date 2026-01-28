@@ -1,5 +1,6 @@
 
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 const Hero: React.FC = () => {
 
@@ -9,7 +10,7 @@ const Hero: React.FC = () => {
      
 
 
-      {/* --- 1. Background Waves (Sky to Sea Gradient) --- */}
+      {/* ---  Background Waves (Sky to Sea Gradient) --- */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden md:block">
 
         <svg
@@ -20,7 +21,6 @@ const Hero: React.FC = () => {
         >
           <defs>
             {/* UPDATED GRADIENT: "Sky to Sea"
-               x1/y1 to x2/y2 defines the direction (0,0 to 0,100 is Top to Bottom)
             */}
             <linearGradient id="sky-to-sea" x1="0%" y1="0%" x2="0%" y2="100%">
               {/* Top: Sky Blue color */}
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
       </div>
 
 
-      {/* --- 2. Main Content --- */}
+      {/* ---  Main Content --- */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:pt-0">
 
         {/* Left: Text */}
@@ -65,9 +65,9 @@ const Hero: React.FC = () => {
             Accurate and explainable diagnosis of retinal diseases using deep learning
           </p>
           <div className="pt-6">
-            <button className="px-8 py-3 md:px-10 md:py-4 hover:cursor-pointer bg-linear-to-b from-[#1976d2] to-[#0d47a1] text-white font-medium rounded shadow-[0_4px_14px_rgba(0,0,0,0.4)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t border-white/20">
+            <Link href="/upload" className="px-8 py-3 md:px-10 md:py-4 hover:cursor-pointer bg-linear-to-b from-[#1976d2] to-[#0d47a1] text-white font-medium rounded shadow-[0_4px_14px_rgba(0,0,0,0.4)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-t border-white/20">
               Upload Retinal Image
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* --- 3. Bottom Wave (Solid Color for transition) --- */}
+      {/* --- Bottom Wave (Solid Color for transition) --- */}
       <div className="absolute bottom-0 left-0 w-full leading-none z-20 hidden md:block">
         <svg
           className="relative block w-full h-[60px] md:h-[120px]"

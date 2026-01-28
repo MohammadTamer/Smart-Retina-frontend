@@ -21,12 +21,12 @@ const Navbar: React.FC = () => {
         {/* --- Logo --- */}
         <div className="flex items-center text-xl md:text-2xl font-bold tracking-wide drop-shadow-md z-50">
           <FaEye className="mr-2 md:mr-3 text-2xl md:text-3xl" />
-          <Link href="#">Smart Retina</Link>
+          <Link href="/">Smart Retina</Link>
         </div>
 
         {/* --- Desktop Menu (Hidden on Small Screens) --- */}
         <div className="hidden md:flex items-center justify-around space-x-8">
-          {[{ title: "Home", href: "/" }, { title: "Upload", href: '/' }, { title: "Diseases", href: '/diseases' }, { title: "About", href: '/' }].map((item) => (
+          {[{ title: "Home", href: "/" }, { title: "Upload", href: '/upload' }, { title: "Diseases", href: '/diseases' }, { title: "About", href: '/about' }].map((item) => (
             <Link
               key={item.title}
               href={item.href}

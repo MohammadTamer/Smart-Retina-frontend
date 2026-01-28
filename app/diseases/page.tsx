@@ -3,7 +3,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { Poppins } from "next/font/google"; // Using Next.js Font optimization
 import Link from "next/link";
 
 
