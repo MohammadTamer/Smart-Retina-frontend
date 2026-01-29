@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { diseasesData } from "../common";
+import Link from "next/link";
 
 
 const Diseases: React.FC = () => {
@@ -14,12 +15,12 @@ const Diseases: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  xlg:grid-cols-5 gap-5 lg:gap-4  max-w-7xl mx-auto">
 
         {diseasesData.map((d, i) => (
-          <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group ">
-            <div className="h-54 overflow-hidden relative">
+          <Link href={d.slug} key={i} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group ">
+            <div className="h-54 overflow-hidden relative" >
               <Image fill
               src={d.img} 
               alt={d.title} 
-              className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+              className="w-full h-full object-cover scale-95 rounded-2xl group-hover:scale-105 transition duration-700" />
               {/* Overlay on hover */}
               <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/20 transition duration-300"></div>
             </div>
@@ -27,7 +28,7 @@ const Diseases: React.FC = () => {
               <h4 className="text-[#152066] font-bold text-lg mb-2 leading-tight">{d.title}</h4>
               <p className="text-sm text-gray-500">{d.desc}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

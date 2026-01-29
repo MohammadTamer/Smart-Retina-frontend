@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section className="relative  top-15 w-full min-h-[92vh] bg-linear-to-b from-[#152066] via-[#2a46b5] to-[#95cbf8] overflow-hidden flex items-center">
+    <section className="relative  top-15 w-full min-h-[89vh] md:min-h-[92vh] bg-linear-to-b from-[#152066] via-[#2a46b5] to-[#95cbf8] overflow-hidden flex items-center">
 
 
       {/* ---  Background Waves (Sky to Sea Gradient) --- */}
