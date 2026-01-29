@@ -7,7 +7,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative  top-15 w-full min-h-[92vh] bg-linear-to-b from-[#152066] via-[#2a46b5] to-[#95cbf8] overflow-hidden flex items-center">
-     
 
 
       {/* ---  Background Waves (Sky to Sea Gradient) --- */}
@@ -53,7 +52,7 @@ const Hero: React.FC = () => {
 
 
       {/* ---  Main Content --- */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:pt-0">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center -mt-37.5 md:mt-0 md:pt-0">
 
         {/* Left: Text */}
         <div className="text-white space-y-6 text-center md:text-left">

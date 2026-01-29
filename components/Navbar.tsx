@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
           }`}
       >
         <div className="flex flex-col items-center py-8 space-y-6">
-          {[{ title: "Home", href: "/" }, { title: "Upload", href: '/' }, { title: "Diseases", href: '/diseases' }, { title: "About", href: '/' }].map((item) => (
+          {[{ title: "Home", href: "/" }, { title: "Upload", href: '/upload' }, { title: "Diseases", href: '/diseases' }, { title: "About", href: '/about' }].map((item) => (
             <Link
               key={item.title}
               href={item.href}
