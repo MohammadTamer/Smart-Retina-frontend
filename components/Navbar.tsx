@@ -1,14 +1,15 @@
-
 'use client'
 
 import { FaEye, FaBars, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import React, { useState } from "react";
-
+import { useAuth } from "@/context/AuthContext";
 const Navbar: React.FC = () => {
+
   // State to handle the mobile menu toggle
   const [isOpen, setIsOpen] = useState(false);
-
+  const { user, logout } = useAuth() as any;
+  // console.log(user)
   // Function to toggle state
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -35,12 +36,24 @@ const Navbar: React.FC = () => {
               {item.title}
             </Link>
           ))}
-          <Link
-            href={"/login"}
-            className="px-5 py-2 bg-[#0d47a1] bg-opacity-80 border border-white/20 rounded-md hover:bg-[#1565c0] transition shadow-lg text-sm backdrop-blur-sm">
-            Login
-          </Link>
+
+         {user ? (
+          <>
+            <button 
+              onClick={logout} 
+              className="px-5 py-2 bg-[#0d47a1] bg-opacity-80 border border-white/20 rounded-md hover:cursor-pointer hover:bg-[#6e0000] transition shadow-lg text-sm backdrop-blur-sm "
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+             <Link href="/login" 
+             className="px-5 py-2 bg-[#0d47a1] bg-opacity-80 border border-white/20 rounded-md hover:bg-[#1565c0] transition shadow-lg text-sm backdrop-blur-sm">
+               Login
+             </Link>
+        )}
         </div>
+      
 
         {/* --- Mobile Menu Button (Hamburger) --- */}
         <button
@@ -68,11 +81,20 @@ const Navbar: React.FC = () => {
               {item.title}
             </Link>
           ))}
-          <Link
-            href={"/login"}
-            className="px-10 py-3 bg-gradient-to-r from-[#0d47a1] to-[#1565c0] border border-white/20 rounded-full shadow-lg text-white font-semibold tracking-wide">
-            Login
-          </Link>
+          {
+            user?(
+              <button 
+                onClick={() => {logout(); setIsOpen(false);}}
+                className="px-5 py-2 bg-[#0d47a1] bg-opacity-80 border border-white/20 rounded-md hover:cursor-pointer hover:bg-[#6e0000] transition shadow-lg text-sm backdrop-blur-sm "
+              >
+                Logout
+              </button>
+            ) : (
+              <Link href="/login" 
+                className="px-5 py-2 bg-[#0d47a1] bg-opacity-80 border border-white/20 rounded-md hover:bg-[#1565c0] transition shadow-lg text-sm backdrop-blur-sm">
+                  Login
+                </Link>
+            )}
         </div>
       </div>
     </nav>

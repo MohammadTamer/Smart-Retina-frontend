@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -7,7 +9,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Smart Retina",
   description: "AI-Powered Retinal Disease Detection",
 };
@@ -19,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-sans`}>{children}</body>
+      <body suppressHydrationWarning className={`${poppins.variable} font-sans`} >
+        {/* Wrap everything inside the Client Provider */}
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
