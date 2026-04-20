@@ -27,7 +27,13 @@ const Navbar: React.FC = () => {
 
         {/* --- Desktop Menu (Hidden on Small Screens) --- */}
         <div className="hidden md:flex items-center justify-around space-x-8">
-          {[{ title: "Home", href: "/" }, { title: "Upload", href: '/upload' }, { title: "Diseases", href: '/diseases' }, { title: "About", href: '/about' }].map((item) => (
+          {[
+            { title: "Home", href: "/" },
+            ...(user ? [{ title: "Dashboard", href: user.role === 'doctor' ? '/admin/dashboard' : '/dashboard' }] : []),
+            { title: "Upload", href: '/upload' },
+            { title: "Diseases", href: '/diseases' },
+            { title: "About", href: '/about' }
+          ].map((item) => (
             <Link
               key={item.title}
               href={item.href}
@@ -71,7 +77,13 @@ const Navbar: React.FC = () => {
           }`}
       >
         <div className="flex flex-col items-center py-8 space-y-6">
-          {[{ title: "Home", href: "/" }, { title: "Upload", href: '/upload' }, { title: "Diseases", href: '/diseases' }, { title: "About", href: '/about' }].map((item) => (
+          {[
+            { title: "Home", href: "/" },
+            ...(user ? [{ title: "Dashboard", href: user.role === 'doctor' ? '/admin/dashboard' : '/dashboard' }] : []),
+            { title: "Upload", href: '/upload' },
+            { title: "Diseases", href: '/diseases' },
+            { title: "About", href: '/about' }
+          ].map((item) => (
             <Link
               key={item.title}
               href={item.href}

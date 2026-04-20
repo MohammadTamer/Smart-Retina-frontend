@@ -57,13 +57,8 @@ const UserDashboard = () => {
             </div>
             <p className="text-gray-500">View your past AI diagnosis reports and doctor notes.</p>
           </div>
-          
-          <Link href="/upload">
-             <button className="bg-[#152066] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#1e2b85] transition shadow-lg flex items-center gap-2 transform hover:-translate-y-1">
-                <FaUpload /> Upload New Scan
-             </button>
-          </Link>
         </div>
+
 
         {/* --- Stats Cards --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
