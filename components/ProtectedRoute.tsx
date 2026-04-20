@@ -11,17 +11,17 @@ export default function ProtectedRoute({
   children: React.ReactNode;
   allowedRoles: string[];
 }) {
-  const { user, loading } = useAuth() as any;
+  const auth = useAuth();
   const router = useRouter();
 
+  const user = auth?.user ?? null;
+  const loading = auth?.loading ?? true;
+
   useEffect(() => {
-    console.log("ProtectedRoute Check:", { user: user?.role });
-    // Only run checks once the AuthContext has finished fetching the user
     if (!loading) {
       if (!user) {
         router.push("/login");
       } else if (!allowedRoles.includes(user.role)) {
-        // Wrong role -> Send them to their correct dashboard
         if (user.role === "doctor") {
           router.push("/admin/dashboard");
         } else {
@@ -31,7 +31,6 @@ export default function ProtectedRoute({
     }
   }, [user, loading, router, allowedRoles]);
 
-  // Show a loading spinner while we check their token
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -40,7 +39,6 @@ export default function ProtectedRoute({
     );
   }
 
-  // If they are logged in AND have the right role, show the page
   if (user && allowedRoles.includes(user.role)) {
     return <>{children}</>;
   }

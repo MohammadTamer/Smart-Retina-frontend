@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FaCloudUploadAlt, FaSpinner, FaCheckCircle } from "react-icons/fa";
+import axios from "axios";
 
 const UploadPage = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -13,20 +14,42 @@ const UploadPage = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
-      setResult(null); // Reset previous result
+      setResult(null);
     }
   };
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     if (!file) return;
     setAnalyzing(true);
-    
-    // Simulate AI Processing Delay (2 seconds)
-    setTimeout(() => {
+    setResult(null);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const token = typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
+
+    try {
+      const res = await axios.post("http://localhost:8000/api/scans/predict", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+      });
+
+      const { prediction } = res.data;
+      const diagnosis = prediction.predicted_class;
+      const confidence = (prediction.confidence * 100).toFixed(1);
+      setResult(`${diagnosis} Detected (Confidence: ${confidence}%)`);
+    } catch (error: any) {
+      console.error("Analysis failed:", error.response?.data || error.message);
+      setResult("Error processing scan. Please try again.");
+    } finally {
       setAnalyzing(false);
-      setResult("Healthy Retinopathy Detected (Confidence: 94%)");
-    }, 2000);
+    }
   };
+
+  // Helper: check if result is a healthy/normal diagnosis
+  const isHealthy = result ? (result.startsWith('Healthy') || result.startsWith('Normal')) : false;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#eef2ff] to-white font-sans text-[#1e293b]">
@@ -85,11 +108,11 @@ const UploadPage = () => {
           ) : (
             // Result State
             <div className="text-center animate-fadeIn">
-              <div className={`w-20 h-20  ${result.startsWith('Healthy') ? 'text-green-600  bg-green-50' : 'text-red-600 bg-red-50'} rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-sm`}>
+              <div className={`w-20 h-20 ${isHealthy ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50'} rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-sm`}>
                 !
               </div>
               <h2 className="text-2xl font-bold text-[#152066] mb-2">Analysis Complete</h2>
-              <p className={`text-lg ${result.startsWith('Healthy') ? 'text-green-600 bg-green-50'  : 'text-red-600 bg-red-50 border-red-100'} font-medium  py-3 px-6 rounded-lg inline-block border `}>
+              <p className={`text-lg ${isHealthy ? 'text-green-600 bg-green-50 border-green-100' : 'text-red-600 bg-red-50 border-red-100'} font-medium py-3 px-6 rounded-lg inline-block border`}>
                 {result}
               </p>
               
@@ -112,4 +135,4 @@ const UploadPage = () => {
   );
 };
 
-export default UploadPage
+export default UploadPage;
