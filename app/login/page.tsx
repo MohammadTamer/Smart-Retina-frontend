@@ -45,7 +45,7 @@ const LoginPage = () => {
       formData.append("username", data.email);
       formData.append("password", data.password);
 
-      const res = await axios.post("http://localhost:8000/auth/login", formData, {
+      const res = await axios.post("http://localhost:8000/api/auth/login", formData, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -88,7 +88,7 @@ const LoginPage = () => {
         </div>
 
         {/* RIGHT SIDE: Form */}
-        <div className={"w-full md:w-1/2 bg-white flex flex-col justify-center p-8 md:p-12 relative " + (loginError?'overflow-y-scroll scrollbar-hide':'')}>
+        <div className={"w-full md:w-1/2 bg-white flex flex-col justify-center p-8 md:p-12 relative " + (loginError ? 'overflow-y-scroll scrollbar-hide' : '')}>
 
           <Link href="/" className={"absolute top-5 left-8 text-gray-500 hover:text-[#152066] flex items-center text-sm font-medium transition "}>
             <FaArrowLeft className="mr-2" /> Back to Home

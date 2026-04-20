@@ -1,8 +1,8 @@
 "use client";
 
-import { useGoogleLogin } from "@react-oauth/google"; 
+import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { FcGoogle } from "react-icons/fc"; 
+import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/context/AuthContext"; // <--- Import Context
 
 interface AuthResponse {
@@ -18,8 +18,8 @@ export default function GoogleLoginButton() {
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        const res = await axios.post<AuthResponse>("http://localhost:8000/auth/google", {
-          token: tokenResponse.access_token, 
+        const res = await axios.post<AuthResponse>("http://localhost:8000/api/auth/google", {
+          token: tokenResponse.access_token,
         });
 
         // Delegate everything to the Context!
@@ -34,7 +34,7 @@ export default function GoogleLoginButton() {
 
   return (
     <div className="flex justify-center">
-      <button 
+      <button
         className="w-full flex items-center justify-center gap-3 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors text-gray-700 font-medium"
         onClick={() => googleLogin()}
       >
