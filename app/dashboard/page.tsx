@@ -7,12 +7,16 @@ import Image from "next/image";
 import { FaFileMedical, FaCalendarAlt, FaSearch, FaEye, FaCheckCircle, FaExclamationCircle, FaTimes, FaUpload, FaSpinner } from "react-icons/fa";
 import Link from "next/link";
 import axios from "axios";
+import { useAuth } from "@/context/AuthContext";
+
 
 const UserDashboard = () => {
+  const { user } = useAuth() as any;
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedReport, setSelectedReport] = useState<any>(null);
   const [scans, setScans] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchScans = async () => {
@@ -49,15 +53,21 @@ const UserDashboard = () => {
       <div className="pt-32 pb-12 px-6 md:px-12 max-w-[1400px] mx-auto">
         
         {/* --- Header Section --- */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
-          <div>
-            <div className="flex items-center gap-3 text-[#152066] mb-1">
-               <FaFileMedical className="text-3xl" />
-               <h1 className="text-3xl font-bold">My Medical History</h1>
+        <div className="mb-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-extrabold text-[#152066] tracking-tight">
+                Welcome back, {user?.full_name?.split(' ')[0] || "User"} 👋
+              </h1>
+              <p className="text-gray-500 mt-2 flex items-center gap-2">
+                <FaFileMedical className="text-blue-500" />
+                Here is your medical retinal scan history.
+              </p>
             </div>
-            <p className="text-gray-500">View your past AI diagnosis reports and doctor notes.</p>
           </div>
         </div>
+
+
 
 
         {/* --- Stats Cards --- */}
