@@ -185,7 +185,7 @@ const AdminDashboard = () => {
 
                         <div className="w-full md:w-1/2 bg-black flex flex-col items-center justify-center relative p-4">
                             <div className="relative w-full h-full">
-                                <Image src={`http://localhost:8000${selectedPatient.image_url}`} alt="Retinal Scan" fill className="object-contain" unoptimized />
+                                <Image src={selectedPatient.image_url?.startsWith('http') ? selectedPatient.image_url : `http://localhost:8000${selectedPatient.image_url}`} alt="Retinal Scan" fill className="object-contain" unoptimized />
                             </div>
                             <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded-full text-xs backdrop-blur-md">
                                 Scan ID: #SR-{selectedPatient.id}

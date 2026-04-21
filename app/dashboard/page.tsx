@@ -183,7 +183,7 @@ const UserDashboard = () => {
             <div className="w-full md:w-1/2 bg-black flex flex-col items-center justify-center relative p-4">
                <div className="relative w-full h-full">
                   <Image 
-                    src={`http://localhost:8000${selectedReport.image_url}`} 
+                    src={selectedReport.image_url?.startsWith('http') ? selectedReport.image_url : `http://localhost:8000${selectedReport.image_url}`} 
                     alt="Scan" 
                     fill 
                     className="object-contain"
