@@ -23,7 +23,7 @@ const UserDashboard = () => {
       const token = localStorage.getItem("access_token");
       if (!token) { setLoading(false); return; }
       try {
-        const res = await axios.get("http://localhost:8000/api/scans/my-scans", {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/scans/my-scans`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setScans(Array.isArray(res.data) ? res.data : []);

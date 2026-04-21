@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const token = localStorage.getItem("access_token");
       if (token) {
         try {
-          const res = await axios.get("http://localhost:8000/api/auth/me", {
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/auth/me`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUser(res.data);
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     // fetch User Instantly (This forces the Navbar to update!)
     try {
-      const res = await axios.get("http://localhost:8000/api/auth/me", {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(res.data);
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:8000/api/auth/logout");
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/auth/logout`);
     } catch (e) {
       console.error("Logout failed", e);
     }

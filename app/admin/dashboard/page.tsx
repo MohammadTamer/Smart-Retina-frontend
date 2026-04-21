@@ -24,7 +24,7 @@ const AdminDashboard = () => {
             const token = localStorage.getItem("access_token");
             if (!token) { setLoading(false); return; }
             try {
-                const res = await axios.get("http://localhost:8000/api/scans/doctor/pending", {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/scans/doctor/pending`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setPatients(res.data);
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
 
         const token = localStorage.getItem("access_token");
         try {
-            await axios.put(`http://localhost:8000/api/scans/doctor/${selectedPatient.id}/verify`, {
+            await axios.put(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/scans/doctor/${selectedPatient.id}/verify`, {
                 final_diagnosis: reviewForm.finalDiagnosis,
                 risk_level: reviewForm.riskLevel,
                 status: "Verified",

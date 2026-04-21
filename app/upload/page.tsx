@@ -29,7 +29,7 @@ const UploadPage = () => {
     const token = typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
 
     try {
-      const res = await axios.post("http://localhost:8000/api/scans/predict", formData, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/scans/predict`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           ...(token ? { Authorization: `Bearer ${token}` } : {}),

@@ -48,7 +48,7 @@ const SignupPage = () => {
         password: data.password,
       };
 
-      await axios.post("http://localhost:8000/api/auth/signup", payload);
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/auth/signup`, payload);
 
       // Pass a query param so the login page can show a success message
       router.push("/login?registered=true");
