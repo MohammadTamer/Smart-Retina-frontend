@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className="absolute top-0 left-0 w-full z-50 bg-[#19246c] text-white">
+        <nav className="absolute top-0 left-0 w-full z-50 bg-[#19246c] dark:bg-slate-950 text-white">
             <div className="flex items-center justify-between px-6 py-4 md:px-16 lg:px-32 md:py-6 relative">
 
                 {/* --- Logo --- */}
@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
 
             {/* --- Mobile Menu Dropdown (Visible only when isOpen is true) --- */}
             <div
-                className={`md:hidden absolute top-full left-0 w-full bg-[#152066]/95 backdrop-blur-lg shadow-2xl transition-all duration-300 ease-in-out transform origin-top ${isOpen ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-0 invisible"
+                className={`md:hidden absolute top-full left-0 w-full bg-[#152066]/95 dark:bg-slate-950/95 backdrop-blur-lg shadow-2xl transition-all duration-300 ease-in-out transform origin-top ${isOpen ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-0 invisible"
                     }`}
             >
                 <div className="flex flex-col items-center py-8 space-y-6">

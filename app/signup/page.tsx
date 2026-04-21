@@ -76,14 +76,14 @@ const SignupPage = () => {
   };
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#152066] p-4 relative overflow-hidden">
+    <main className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#152066] dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 relative overflow-hidden transition-colors duration-300">
 
       {/* Background Shapes */}
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px]"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-cyan-500/20 rounded-full blur-[100px]"></div>
 
       {/* Main Container */}
-      <div className="w-full max-w-5xl h-[700px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl flex overflow-hidden relative z-10">
+      <div className="w-full max-w-5xl h-[700px] bg-white/10 dark:bg-slate-900/50 backdrop-blur-xl border border-white/20 dark:border-slate-800 rounded-3xl shadow-2xl flex overflow-hidden relative z-10">
 
         {/* --- LEFT SIDE: Branding --- */}
         <div className="hidden md:flex w-1/2 flex-col justify-center items-start p-12 relative bg-gradient-to-br from-[#152066] to-[#2563eb] text-white">
@@ -112,7 +112,7 @@ const SignupPage = () => {
 
         {/* --- RIGHT SIDE: Signup Form --- */}
         {/* Added overflow-y-auto so the form scrolls nicely if the screen is short */}
-        <div className="w-full md:w-1/2 bg-white flex flex-col justify-start md:justify-center p-8 md:p-12 relative overflow-y-auto">
+        <div className="w-full md:w-1/2 bg-white dark:bg-slate-900 flex flex-col justify-start md:justify-center p-8 md:p-12 relative overflow-y-auto transition-colors duration-300">
 
           <Link href="/" className="absolute top-5 left-8 text-gray-500 hover:text-[#152066] flex items-center text-sm font-medium transition mt-2 md:mt-0">
             <FaArrowLeft className="mr-2" /> Back to Home
@@ -120,8 +120,8 @@ const SignupPage = () => {
 
           <div className="max-w-md w-full mx-auto space-y-6 mt-12 md:mt-8">
             <div className="text-center md:text-left">
-              <h2 className="text-3xl font-bold text-[#1e293b]">Create Account</h2>
-              <p className="text-gray-500 mt-2">Get started with Smart Retina today.</p>
+              <h2 className="text-3xl font-bold text-[#1e293b] dark:text-blue-100">Create Account</h2>
+              <p className="text-gray-500 dark:text-gray-400 mt-2">Get started with Smart Retina today.</p>
             </div>
 
             {signupError && (
@@ -140,8 +140,8 @@ const SignupPage = () => {
                     {...register("fullName")}
                     type="text"
                     placeholder="Full Name"
-                    className={`w-full pl-12 pr-4 py-3 bg-gray-50 border rounded-xl focus:bg-white outline-none transition-all placeholder:text-gray-400 text-gray-700
-                      ${errors.fullName ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-gray-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"}
+                    className={`w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-800 border rounded-xl focus:bg-white dark:focus:bg-slate-700 outline-none transition-all placeholder:text-gray-400 text-gray-700 dark:text-slate-200
+                      ${errors.fullName ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-gray-200 dark:border-slate-700 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900"}
                     `}
                   />
                 </div>
@@ -156,8 +156,8 @@ const SignupPage = () => {
                     {...register("email")}
                     type="email"
                     placeholder="Email Address"
-                    className={`w-full pl-12 pr-4 py-3 bg-gray-50 border rounded-xl focus:bg-white outline-none transition-all placeholder:text-gray-400 text-gray-700
-                      ${errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-gray-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"}
+                    className={`w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-800 border rounded-xl focus:bg-white dark:focus:bg-slate-700 outline-none transition-all placeholder:text-gray-400 text-gray-700 dark:text-slate-200
+                      ${errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-gray-200 dark:border-slate-700 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900"}
                     `}
                   />
                 </div>
@@ -172,8 +172,8 @@ const SignupPage = () => {
                     {...register("password")}
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
-                    className={`w-full pl-12 pr-12 py-3 bg-gray-50 border rounded-xl focus:bg-white outline-none transition-all placeholder:text-gray-400 text-gray-700
-                      ${errors.password ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-gray-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"}
+                    className={`w-full pl-12 pr-12 py-3 bg-gray-50 dark:bg-slate-800 border rounded-xl focus:bg-white dark:focus:bg-slate-700 outline-none transition-all placeholder:text-gray-400 text-gray-700 dark:text-slate-200
+                      ${errors.password ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-gray-200 dark:border-slate-700 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900"}
                     `}
                   />
                   <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none">
@@ -191,8 +191,8 @@ const SignupPage = () => {
                     {...register("confirmPassword")}
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="Confirm Password"
-                    className={`w-full pl-12 pr-12 py-3 bg-gray-50 border rounded-xl focus:bg-white outline-none transition-all placeholder:text-gray-400 text-gray-700
-                      ${errors.confirmPassword ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-gray-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"}
+                    className={`w-full pl-12 pr-12 py-3 bg-gray-50 dark:bg-slate-800 border rounded-xl focus:bg-white dark:focus:bg-slate-700 outline-none transition-all placeholder:text-gray-400 text-gray-700 dark:text-slate-200
+                      ${errors.confirmPassword ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-gray-200 dark:border-slate-700 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900"}
                     `}
                   />
                   <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none">
@@ -213,16 +213,16 @@ const SignupPage = () => {
             </form>
 
             <div className="relative flex py-2 items-center">
-              <div className="flex-grow border-t border-gray-200"></div>
-              <span className="flex-shrink-0 mx-4 text-gray-400 text-sm">Or register with</span>
-              <div className="flex-grow border-t border-gray-200"></div>
+              <div className="flex-grow border-t border-gray-200 dark:border-slate-800"></div>
+              <span className="flex-shrink-0 mx-4 text-gray-400 dark:text-gray-500 text-sm">Or register with</span>
+              <div className="flex-grow border-t border-gray-200 dark:border-slate-800"></div>
             </div>
 
             <GoogleLoginButton />
 
-            <p className="text-center text-gray-600 text-sm">
+            <p className="text-center text-gray-600 dark:text-gray-400 text-sm">
               Already have an account?
-              <Link href="/login" className="text-blue-600 font-bold ml-1 hover:underline">
+              <Link href="/login" className="text-blue-600 dark:text-blue-400 font-bold ml-1 hover:underline">
                 Log in
               </Link>
             </p>
