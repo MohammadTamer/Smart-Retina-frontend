@@ -5,7 +5,6 @@ import Features from "../components/Features";
 import Diseases from "../components/Diseases";
 import Footer from "../components/Footer";
 
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#e3f2fd] dark:bg-slate-950 transition-colors duration-300"> {/* Matches the wave fill color */}
